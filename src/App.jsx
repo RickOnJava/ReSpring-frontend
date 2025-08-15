@@ -16,6 +16,11 @@ import AllReports from "./pages/admin/AllReports";
 import RoleRedirect from "./routes/RoleDirect";
 import AdminLayout from "./pages/admin/AdminLayout";
 import EditSpring from "./pages/admin/EditSpring";
+import MyReportsPage from "./pages/dashboard/MyReportPage";
+import FeedbackList from "./pages/admin/FeedbackList";
+import AdminAnalytics from "./pages/admin/AdminAnalytics";
+import NearbySprings from "./pages/dashboard/Map/NearbySpring";
+import SmartSuggestions from "./pages/admin/SmartSuggestions";
 
 export default function App() {
   return (
@@ -39,6 +44,8 @@ export default function App() {
             <Route index element={<Welcome />} />
             <Route path="springs" element={<SpringList />} />
             <Route path="map" element={<MapDashboard />} />
+            <Route path="my-reports" element={<MyReportsPage />} />
+            <Route path="nearby-springs" element={<NearbySprings />} />
           </Route>
           <Route path="report/:id" element={<ReportIssue />} />
         </Route>
@@ -55,7 +62,10 @@ export default function App() {
           <Route index element={<AdminDashboard />} />
           <Route path="add-spring" element={<AddSpring />} />
           <Route path="reports" element={<AllReports />} />
+          <Route path="feedbacks" element={<FeedbackList />} />
           <Route path="/admin/edit-spring/:id" element={<EditSpring />} />
+          <Route path="analytics" element={<AdminAnalytics />} />
+          <Route path="smart-suggestions" element={<SmartSuggestions />} />
         </Route>
        
 

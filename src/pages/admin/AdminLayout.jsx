@@ -20,9 +20,12 @@ export default function AdminLayout() {
       <aside className="w-64 bg-white shadow-lg">
         <div className="p-6 text-2xl font-bold text-green-700">ReSprings Admin</div>
         <nav className="flex flex-col gap-2 p-4">
-          <NavLink to="/admin" className="text-gray-700 hover:text-green-600">Dashboard</NavLink>
+          <NavLink to="/admin" className="text-gray-700 hover:text-green-600">Spring List</NavLink>
           <NavLink to="/admin/add-spring" className="text-gray-700 hover:text-green-600">Add Spring</NavLink>
+          <NavLink to="/admin/analytics" className="text-gray-700 hover:text-green-600">View Statistical Data</NavLink>
           <NavLink to="/admin/reports" className="text-gray-700 hover:text-green-600">View Reports</NavLink>
+          <NavLink to="/admin/smart-suggestions" className="text-gray-700 hover:text-green-600">Smart Suggestions</NavLink>
+          <NavLink to="/admin/feedbacks" className="text-gray-700 hover:text-green-600">View Feedbacks</NavLink>
           <button
             onClick={handleLogout}
             className="mt-6 flex items-center text-red-500 hover:text-red-700"

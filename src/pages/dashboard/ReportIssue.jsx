@@ -38,7 +38,7 @@ export default function ReportIssue() {
         }
       );
       toast("Issue reported successfully!");
-      navigate("/dashboard");
+      navigate("/dashboard/my-reports");
     } catch (err) {
       console.error(err);
       toast("Something went wrong!");

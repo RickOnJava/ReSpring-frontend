@@ -6,7 +6,7 @@ import { toast } from "sonner";
 import { server } from "@/config";
 
 export default function AdminDashboard() {
-  const [stats, setStats] = useState({ totalSprings: 0, totalReports: 0, active: 0, dry: 0 });
+  // const [stats, setStats] = useState({ totalSprings: 0, totalReports: 0, active: 0, dry: 0 });
 
   const { token } = useSelector((store) => store.auth);
 
@@ -16,25 +16,26 @@ export default function AdminDashboard() {
   useEffect(() => {
     async function fetchStats() {
       const springsRes = await axios.get(`${server}/api/v1/springs`);
-      const reportsRes = await axios.get(`${server}/api/v1/reports`);
-      const active = springsRes.data.filter((s) => s.status === "Active").length;
-      const dry = springsRes.data.filter((s) => s.status === "Dry").length;
-      const low = springsRes.data.filter((s) => s.status === "Low").length;
+      // const reportsRes = await axios.get(`${server}/api/v1/reports`);
+      // const active = springsRes.data.filter((s) => s.status === "Active").length;
+      // const dry = springsRes.data.filter((s) => s.status === "Dry").length;
+      // const low = springsRes.data.filter((s) => s.status === "Low").length;
 
-      setStats({
-        totalSprings: springsRes.data.length,
-        totalReports: reportsRes.data.length,
-        active,
-        dry,
-        low
-      });
+      // setStats({
+      //   totalSprings: springsRes.data.length,
+      //   totalReports: reportsRes.data.length,
+      //   active,
+      //   dry,
+      //   low
+      // });
 
       setSprings(springsRes.data);
     }
 
     fetchStats();
-  }, [springs]);
+  }, []);  // here inside dependency spring tha
 
+  
 
   const handleDelete = async (id) => {
     try {
@@ -57,21 +58,21 @@ export default function AdminDashboard() {
 
   return (
     <div>
-      <h1 className="text-3xl font-bold mb-4 text-green-800">Admin Dashboard</h1>
+      {/* <h1 className="text-3xl font-bold mb-4 text-green-800">Admin Dashboard</h1>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         <Card title="Total Springs" count={stats.totalSprings} />
         <Card title="Reports" count={stats.totalReports} />
         <Card title="Active Springs" count={stats.active} />
         <Card title="Dry Springs" count={stats.dry} />
         <Card title="Low Springs" count={stats.low} />
-      </div>
+      </div> */}
 
        {/* Spring Details */}
        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {springs.map((spring) => (
           <div key={spring._id} className="bg-white shadow-md p-4 rounded-lg">
             <h2 className="text-xl font-bold mb-2">{spring.name}</h2>
-            <p><strong>Coordinates: </strong> {spring.location.lat}, {spring.location.lng}</p>
+            <p><strong>Coordinates: </strong> {spring.location.coordinates[1]}, {spring.location.coordinates[0]}</p>
             <p><strong>Status:</strong> {spring.status}</p>
             <p><strong>Flow Rate:</strong> {spring.flowRate}</p>
             <div className=" flex items-center justify-between">

@@ -1,3 +1,4 @@
+import FloatingChatbot from "@/components/FloatingChatBot";
 import ReSpringsBot from "@/components/ReSpringsBot";
 import { logout } from "@/redux/authSlice";
 import { useEffect } from "react";
@@ -50,6 +51,22 @@ export default function DashboardLayout() {
           >
             🗺️ Map View
           </NavLink>
+          <NavLink
+            to="/dashboard/nearby-springs"
+            className={({ isActive }) =>
+              `block hover:bg-blue-800 p-2 rounded ${isActive ? "bg-blue-800" : ""}`
+            }
+          >
+            🗺️ Nearby Springs
+          </NavLink>
+          <NavLink
+            to="/dashboard/my-reports"
+            className={({ isActive }) =>
+              `block hover:bg-blue-800 p-2 rounded ${isActive ? "bg-blue-800" : ""}`
+            }
+          >
+            🚨 My Reports
+          </NavLink>
           
            <button
             onClick={handleLogout}
@@ -69,7 +86,7 @@ export default function DashboardLayout() {
       {/* Nested Route Content */}
       <main className="flex-1 p-6 bg-gray-50">
         <Outlet />
-        <ReSpringsBot />
+        <FloatingChatbot />
       </main>
     </div>
   );
