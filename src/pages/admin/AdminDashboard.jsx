@@ -13,6 +13,8 @@ export default function AdminDashboard() {
   const [springs, setSprings] = useState([]);
   const navigate = useNavigate();
 
+  console.log(springs)
+
   useEffect(() => {
     async function fetchStats() {
       const springsRes = await axios.get(`${server}/api/v1/springs`);
@@ -71,18 +73,18 @@ export default function AdminDashboard() {
        <div className="mt-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {springs.map((spring) => (
           <div key={spring._id} className="bg-white shadow-md p-4 rounded-lg">
-            <h2 className="text-xl font-bold mb-2">{spring.name}</h2>
-            <p><strong>Coordinates: </strong> {spring.location.coordinates[1]}, {spring.location.coordinates[0]}</p>
-            <p><strong>Status:</strong> {spring.status}</p>
-            <p><strong>Flow Rate:</strong> {spring.flowRate}</p>
+            <h2 className="text-xl font-bold mb-2">{spring?.name}</h2>
+            <p><strong>Coordinates: </strong> {spring?.location?.}, {spring?.location?.coordinates[0]}</p>
+            <p><strong>Status:</strong> {spring?.status}</p>
+            <p><strong>Flow Rate:</strong> {spring?.flowRate}</p>
             <div className=" flex items-center justify-between">
               <button
-            onClick={() => navigate(`/admin/edit-spring/${spring._id}`)}
+            onClick={() => navigate(`/admin/edit-spring/${spring?._id}`)}
             className="mt-4 px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700">
               Edit
             </button>
             <button
-            onClick={() => handleDelete(spring._id)}
+            onClick={() => handleDelete(spring?._id)}
             className="mt-4 px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700">
               Delete
             </button>
