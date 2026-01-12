@@ -74,7 +74,7 @@ export default function AdminDashboard() {
         {springs.map((spring) => (
           <div key={spring._id} className="bg-white shadow-md p-4 rounded-lg">
             <h2 className="text-xl font-bold mb-2">{spring?.name}</h2>
-            <p><strong>Coordinates: </strong> {spring?.location?.}, {spring?.location?.coordinates[0]}</p>
+            <p><strong>Coordinates: </strong> {spring?.location?.coordinates[1]}, {spring?.location?.coordinates[0]}</p>
             <p><strong>Status:</strong> {spring?.status}</p>
             <p><strong>Flow Rate:</strong> {spring?.flowRate}</p>
             <div className=" flex items-center justify-between">
